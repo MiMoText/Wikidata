@@ -25,10 +25,10 @@ class CSV {
         return records;
     }
 
-    static void write(Path path, ArrayList<CSVPrintable> data) throws IOException {
+    static void write(Path path, ArrayList<CSVPrintable> data, CSVPrintable dataForHeader) throws IOException {
         if (data.isEmpty()) return;
         CSVPrinter printer = new CSVPrinter(new FileWriter(path.toFile()), csvFormat);
-        data.get(0).printCSVHeader(printer);
+        dataForHeader.printCSVHeader(printer);
         for (CSVPrintable date : data) date.printCSVRecord(printer);
         printer.flush();
         printer.close();

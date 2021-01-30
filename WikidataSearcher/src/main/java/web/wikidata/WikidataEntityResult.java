@@ -21,6 +21,10 @@ public class WikidataEntityResult extends CSVPrintable {
         entities.add(entity);
     }
 
+    public int getEntitiesSize() {
+        return entities.size();
+    }
+
     @Override
     public void createFromCSVRecord(CSVRecord csvRecord) { }
 
