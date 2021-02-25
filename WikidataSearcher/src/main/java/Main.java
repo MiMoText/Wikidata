@@ -38,7 +38,8 @@ public class Main {
                 for (String id : wikiIDs) {
                     String label = requester.queryLabel(id);
                     String labelFR = requester.queryFrenchLabel(id);
-                    result.addEntity(new WikidataEntity(id, label, labelFR));
+                    String labelDE = requester.queryGermanLabel(id);
+                    result.addEntity(new WikidataEntity(id, label, labelFR, labelDE));
                 }
                 results.add(result);
             }

@@ -24,7 +24,7 @@ public class WikidataEntityRequester {
     }
 
     /**
-     * Bestimmt das englische Labels zu einer Wikidata-ID
+     * Bestimmt das englische Label zu einer Wikidata-ID
      * @param entityID Wikidata-ID
      * @return englische Label
      * @throws Exception
@@ -34,13 +34,23 @@ public class WikidataEntityRequester {
     }
 
     /**
-     * Bestimmt das franzoesische Labels zu einer Wikidata-ID
+     * Bestimmt das franzoesische Label zu einer Wikidata-ID
      * @param entityID Wikidata-ID
      * @return franzoesische Label
      * @throws Exception
      */
     public String queryFrenchLabel(String entityID) throws Exception {
         return queryFirst(queryStringLabel(entityID, "fr"));
+    }
+
+    /**
+     * Bestimmt das deutsche Label zu einer Wikidata-ID
+     * @param entityID Wikidata-ID
+     * @return deutsches Label
+     * @throws Exception
+     */
+    public String queryGermanLabel(String entityID) throws Exception {
+        return queryFirst(queryStringLabel(entityID, "de"));
     }
 
     private String queryFirst(String queryString) throws Exception {

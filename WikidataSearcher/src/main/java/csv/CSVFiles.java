@@ -9,9 +9,9 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class CSVFiles {
-    private static final Path vocabularies = Paths.get("/", "Volumes", "Ultra Fit", "mimotext", "data", "vocabularies-main", "Themenvokabular.tsv");
+    private static final Path vocabularies = Paths.get("Themenvokabular.tsv");
 
-    private static final Path results = Paths.get("/", "Volumes", "Ultra Fit", "mimotext", "data", "vocabularies-main", "WikidataVokabular.tsv");
+    private static final Path results = Paths.get("WikidataVokabularDE.tsv");
 
     public static ArrayList<CSVRecord> readVocabulary() throws IOException {
         System.out.println("READ vocabulary");
