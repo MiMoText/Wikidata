@@ -2,7 +2,7 @@
 
 WikidataSearcher sucht die Begriffe der 1. Spalte des [Themenvokabulars.tsv](https://github.com/MiMoText/vocabularies/blob/main/Themenvokabular.tsv) auf Wikidata, extrahiert die Wikidata-IDs der ersten *fünf* Suchergebnisse und speichert diese mit der URL, dem englischen und französischen Label in der Datei [WikidataVokabular.tsv](https://github.com/MiMoText/Wikidata/blob/main/WikidataVokabular.tsv).
 
-Die Ergebnisse wurden um die **deutschen Labels** erweitert. Die erweiterte Liste befindet sich in der Datei [WikidataVokabularDE.tsv](https://github.com/MiMoText/Wikidata/blob/main/WikidataVokabularDE.tsv).
+Die Ergebnisse wurden um die **deutschen Labels** erweitert. Die erweiterte Liste befindet sich in der Datei [WikidataVokabularDE.tsv](https://github.com/MiMoText/Wikidata/blob/main/WikidataVokabularDE.tsv). Die Datei wurde durch neue Suchanfragen an Wikidata generiert, wodurch nicht zwingend, die gleichen Wikidata-Entitäten, wie in der Datei [WikidataVokabular.tsv](https://github.com/MiMoText/Wikidata/blob/main/WikidataVokabular.tsv), enthalten sind.
 
 ### Ablauf
 
