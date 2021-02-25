@@ -27,11 +27,12 @@
             <version>1.13.1</version>
         </dependency>
 
-        <!-- https://github.com/BorderCloud/SPARQL-JAVA -->
+        <!-- https://mvnrepository.com/artifact/com.bordercloud/SPARQL-JAVA -->
         <dependency>
             <groupId>com.bordercloud</groupId>
-            <artifactId>sparql-java</artifactId>
+            <artifactId>SPARQL-JAVA</artifactId>
             <version>1.0.9</version>
         </dependency>
+
     </dependencies>
 </project>
