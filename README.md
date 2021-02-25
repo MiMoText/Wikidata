@@ -2,6 +2,8 @@
 
 WikidataSearcher sucht die Begriffe der 1. Spalte des [Themenvokabulars.tsv](https://github.com/MiMoText/vocabularies/blob/main/Themenvokabular.tsv) auf Wikidata, extrahiert die Wikidata-IDs der ersten *fünf* Suchergebnisse und speichert diese mit der URL, dem englischen und französischen Label in der Datei [WikidataVokabular.tsv](https://github.com/MiMoText/Wikidata/blob/main/WikidataVokabular.tsv).
 
+Die Ergebnisse wurden um die **deutschen Labels** erweitert. Die erweiterte Liste befindet sich in der Datei [WikidataVokabularDE.tsv](https://github.com/MiMoText/Wikidata/blob/main/WikidataVokabularDE.tsv).
+
 ### Ablauf
 
 Je Thema (1. Spalte)
@@ -20,7 +22,8 @@ id0 | Wikidata-ID des 1. Suchergebnisses
 url0 | Wikidata-URL des 1. Suchergebnisses
 label0 | Wikidata-Label des 1. Suchergebnisses (englisch)
 label@fr0 | Wikidata-Label des 1. Suchergebnisses (französisch)
-*id1 - label@fr1* | *Wikidata-Infos für 2. Suchergebnis [äquivalent zu 1.]*
-*id2 - label@fr2* | *Wikidata-Infos für 3. Suchergebnis [äquivalent zu 1.]*
-*id3 - label@fr3* | *Wikidata-Infos für 4. Suchergebnis [äquivalent zu 1.]*
-*id4 - label@fr4* | *Wikidata-Infos für 5. Suchergebnis [äquivalent zu 1.]*
+label@de0 | Wikidata-Label des 1. Suchergebnisses (deutsch)
+*id1 - label@de1* | *Wikidata-Infos für 2. Suchergebnis [äquivalent zu 1.]*
+*id2 - label@de2* | *Wikidata-Infos für 3. Suchergebnis [äquivalent zu 1.]*
+*id3 - label@de3* | *Wikidata-Infos für 4. Suchergebnis [äquivalent zu 1.]*
+*id4 - label@de4* | *Wikidata-Infos für 5. Suchergebnis [äquivalent zu 1.]*
