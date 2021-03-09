@@ -9,13 +9,23 @@ import java.util.StringTokenizer;
 
 public abstract class CSVPrintable implements Comparable {
     public CSVPrintable() {}
-    public CSVPrintable(CSVRecord csvRecord) {
-        this.createFromCSVRecord(csvRecord);
+    public CSVPrintable(CSVRecord csvRecord, CSVRecord csvHeader) {
+        this.createFromCSVRecord(csvRecord, csvHeader);
     }
 
-    public abstract void createFromCSVRecord(CSVRecord csvRecord);
-    public abstract void printCSVHeader(CSVPrinter printer) throws IOException;
-    public abstract void printCSVRecord(CSVPrinter printer) throws IOException;
+    public abstract void createFromCSVRecord(CSVRecord csvRecord, CSVRecord csvHeader);
+    public abstract void printHeaderToCSV(CSVPrinter printer) throws IOException;
+    public abstract void printDataToCSV(CSVPrinter printer) throws IOException;
+
+    public void printHeaderRecordToCSV(CSVPrinter printer) throws IOException {
+        printHeaderToCSV(printer);
+        printer.println();
+    }
+
+    public void printDataRecordToCSV(CSVPrinter printer) throws IOException {
+        printDataToCSV(printer);
+        printer.println();
+    }
 
     public ArrayList<String> parseStringArray(String str) {
         ArrayList<String> list = new ArrayList<>();

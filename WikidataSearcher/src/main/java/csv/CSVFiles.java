@@ -9,9 +9,9 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class CSVFiles {
-    private static final Path vocabularies = Paths.get("Themenvokabular.tsv");
+    private static final Path vocabularies = Paths.get("/", "Volumes", "Ultra Fit", "mimotext", "data", "vocabularies-main", "Themenvokabular.tsv");
 
-    private static final Path results = Paths.get("WikidataVokabularDE.tsv");
+    private static final Path results = Paths.get("/", "Volumes", "Ultra Fit", "mimotext", "data", "vocabularies-main", "WikidataVokabularV3.tsv");
 
     public static ArrayList<CSVRecord> readVocabulary() throws IOException {
         System.out.println("READ vocabulary");
@@ -19,15 +19,7 @@ public class CSVFiles {
     }
 
     public static void writeWikiEntityResults(ArrayList<WikidataEntityResult> list) throws IOException {
-        WikidataEntityResult resultForHeader = list.get(0);
-        int longest = resultForHeader.getEntitiesSize();
-        for (WikidataEntityResult entityResult : list) {
-            if (entityResult.getEntitiesSize() > longest) {
-                resultForHeader = entityResult;
-                longest = resultForHeader.getEntitiesSize();
-            }
-        }
-        CSV.write(results, new ArrayList<>(list), resultForHeader);
+        CSV.write(results, new ArrayList<>(list));
         System.out.println("Written results");
     }
 }

@@ -4,9 +4,42 @@ import web.SPARQLInquirer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class WikidataEntityRequester {
     private final static String endpointUrl = "https://query.wikidata.org/sparql";
+
+    private String queryIDsWithLabel(String label, String language) {
+        return "SELECT ?id \n" +
+                "WHERE \n" +
+                "{\n" +
+                "  ?id rdfs:label \"" + label + "\"@" + language + ".\n" +
+                "}";
+    }
+
+    private String queryIDsWithAlias(String label, String language) {
+        return "SELECT ?id \n" +
+                "WHERE \n" +
+                "{\n" +
+                "  ?id skos:altLabel \"" + label + "\"@" + language + ".\n" +
+                "}";
+    }
+
+    public HashSet<String> queryIDsWithLabelFrench(String label) throws Exception {
+        return queryAll(queryIDsWithLabel(label, "fr"));
+    }
+
+    public HashSet<String> queryIDsWithLabelEnglish(String label) throws Exception {
+        return queryAll(queryIDsWithLabel(label, "en"));
+    }
+
+    public HashSet<String> queryIDsWithAliasFrench(String label) throws Exception {
+        return queryAll(queryIDsWithAlias(label, "fr"));
+    }
+
+    public HashSet<String> queryIDsWithAliasEnglish(String label) throws Exception {
+        return queryAll(queryIDsWithAlias(label, "en"));
+    }
 
     /**
      * SPARQL-Anfrage zum Bestimmen des Labels in einer gewuenschten Sprache
@@ -68,20 +101,19 @@ public class WikidataEntityRequester {
         return null;
     }
 
-    /*
-    public ArrayList<String> queryAll(String queryString) throws Exception {
+    public HashSet<String> queryAll(String queryString) throws Exception {
         SPARQLInquirer inquirer = new SPARQLInquirer();
         HashMap results = inquirer.request(endpointUrl, queryString);
         return extractAll(results);
     }
 
-    private static ArrayList<String> extractAll(HashMap<String, HashMap> results) {
-        ArrayList<String> resultList = new ArrayList<>();
+    private static HashSet<String> extractAll(HashMap<String, HashMap> results) {
+        HashSet<String> set = new HashSet<>();
         for (HashMap value : (ArrayList<HashMap>) results.get("result").get("rows")) {
             for (String variable : (ArrayList<String>) results.get("result").get("variables")) {
-                resultList.add((String) value.get(variable));
+                set.add((String) value.get(variable));
             }
         }
-        return resultList;
-    }*/
+        return set;
+    }
 }

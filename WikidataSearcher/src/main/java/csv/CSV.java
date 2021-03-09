@@ -25,11 +25,14 @@ class CSV {
         return records;
     }
 
-    static void write(Path path, ArrayList<CSVPrintable> data, CSVPrintable dataForHeader) throws IOException {
+    static void write(Path path, ArrayList<CSVPrintable> data) throws IOException {
+        write(path, data, data.get(0));
+    }
+    static void write(Path path, ArrayList<CSVPrintable> data, CSVPrintable dataToUseForHeader) throws IOException {
         if (data.isEmpty()) return;
         CSVPrinter printer = new CSVPrinter(new FileWriter(path.toFile()), csvFormat);
-        dataForHeader.printCSVHeader(printer);
-        for (CSVPrintable date : data) date.printCSVRecord(printer);
+        dataToUseForHeader.printHeaderRecordToCSV(printer);
+        for (CSVPrintable date : data) date.printDataRecordToCSV(printer);
         printer.flush();
         printer.close();
     }
