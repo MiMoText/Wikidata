@@ -5,7 +5,12 @@ import web.wikidata.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-public class Main {
+public class VocabularyMain {
+    /**
+     * Main zum Suchen der Begriffe der Themenvokabular.tsv auf Wikidata
+     * Pfade ggfs. in csv.CSVFiles anpassen
+     * @param args
+     */
     public static void main(String [] args) {
         try {
             ArrayList<WikidataEntityResult> results = new ArrayList<>();
@@ -32,7 +37,7 @@ public class Main {
                 ArrayList<String> wikiIDs = searcher.getFirstResultsIDs(topic0, 5);*/
 
                 // Anfragen des englischen und franzoesischen Labels
-                WikidataEntityRequester requester = new WikidataEntityRequester();
+                WikidataRequester requester = new WikidataRequester();
 
                 HashSet<String> ids;
                 ids = requester.queryIDsWithLabelFrench(topic0);
