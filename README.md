@@ -1,6 +1,16 @@
 # Wikidata
 
-WikidataSearcher sucht die Begriffe der 1. Spalte des [Themenvokabulars.tsv](https://github.com/MiMoText/vocabularies/blob/main/Themenvokabular.tsv) auf deren Existenz in Wikidata als Label oder Alias.
+WikidataSearcher ermöglicht die Abfrage von Wikidata, wie IDs, Label und Alias, und beinhaltet zwei Main-Skripte: **DelMain** und **VocabularyMain**.
+
+## DelMain
+
+DelMain erweitert die Datei [DEL_reduziert.tsv](https://github.com/MiMoText/vocabularies/blob/main/DEL_reduziert.tsv) um eine Spalte für die deutschen Labels *Wikidata Label (de)*, indem diese mithilfe der Wikidata-ID *Wikidata Ids (zu DEL-Begriffen)* von Wikidata abgefragt werden.
+
+Die erweiterte Tabelle ist die [DEL_reduziert_de.tsv](https://github.com/MiMoText/vocabularies/blob/main/DEL_reduziert_de.tsv).
+
+## VocabularyMain
+
+VocabularyMain sucht die Begriffe der 1. Spalte des [Themenvokabulars.tsv](https://github.com/MiMoText/vocabularies/blob/main/Themenvokabular.tsv) auf deren Existenz in Wikidata als Label oder Alias.
 
 ### Ablauf
 
@@ -26,35 +36,3 @@ Anzahl der Suchergebnisse|Anzahl der Entitäten, die mit einer Strategie gefunde
 Ergebnisse durch Suche nach|Strategie, mit welcher die Entitäten gefunden wurden. Wurden keine Entitäten gefunden, ist diese Zelle mit **NONE** beschriftet 
 Ergebnisse (IDs)|Array von Wikidata-Entitäten-IDs 
 Ergebnisse (URLs)|Array von Wikidata-Entitäten-URLs (passend zu den IDs)
-
----
-## ältere Version
-[Code](https://github.com/MiMoText/Wikidata/tree/b29e47dbba527053456db79142a53298f83f11f0)
-
-WikidataSearcher sucht die Begriffe der 1. Spalte des [Themenvokabulars.tsv](https://github.com/MiMoText/vocabularies/blob/main/Themenvokabular.tsv) auf Wikidata, extrahiert die Wikidata-IDs der ersten *fünf* Suchergebnisse und speichert diese mit der URL, dem englischen und französischen Label in der Datei [WikidataVokabular.tsv](https://github.com/MiMoText/Wikidata/blob/main/WikidataVokabular.tsv).
-
-Die Ergebnisse wurden um die **deutschen Labels** erweitert. Die erweiterte Liste befindet sich in der Datei [WikidataVokabularDE.tsv](https://github.com/MiMoText/Wikidata/blob/main/WikidataVokabularDE.tsv). Die Datei wurde durch neue Suchanfragen an Wikidata generiert, wodurch nicht zwingend, die gleichen Wikidata-Entitäten, wie in der Datei [WikidataVokabular.tsv](https://github.com/MiMoText/Wikidata/blob/main/WikidataVokabular.tsv), enthalten sind.
-
-### Ablauf
-
-Je Thema (1. Spalte)
-1. HTTP-Get Anfrage an https://www.wikidata.org/w/index.php?search=
-2. Aus dem Body der HTML werden die Wikidata-IDs der ersten *fünf* Suchergebnisse extrahiert
-3. Per SPARQL Anfrage werden das englische Label und französische Label ermittelt
-
-### Erstellte TSV
-[WikidataVokabular.tsv](https://github.com/MiMoText/Wikidata/blob/main/WikidataVokabular.tsv)
-
-Header | Beschreibung
---------- | ---------------
-DEL komplett |*1. Spalte Original-Datei*
-DEL Schnittmenge |*2. Spalte Original-Datei*
-id0 | Wikidata-ID des 1. Suchergebnisses
-url0 | Wikidata-URL des 1. Suchergebnisses
-label0 | Wikidata-Label des 1. Suchergebnisses (englisch)
-label@fr0 | Wikidata-Label des 1. Suchergebnisses (französisch)
-label@de0 | Wikidata-Label des 1. Suchergebnisses (deutsch)
-*id1 - label@de1* | *Wikidata-Infos für 2. Suchergebnis [äquivalent zu 1.]*
-*id2 - label@de2* | *Wikidata-Infos für 3. Suchergebnis [äquivalent zu 1.]*
-*id3 - label@de3* | *Wikidata-Infos für 4. Suchergebnis [äquivalent zu 1.]*
-*id4 - label@de4* | *Wikidata-Infos für 5. Suchergebnis [äquivalent zu 1.]*
